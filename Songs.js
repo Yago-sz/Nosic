@@ -2,14 +2,20 @@ export default [
     
   {
     src: "./musicas/devil.mp3", // ⬅ Nome corrigido!
-    name: "Evanescence - Afterlife",
-    cover: "./capas/devil.jpg",
+    name: "Afterlife - Evanescence",
+    cover: "./capas/Devil.jpg",
   },
     {
       src: "./musicas/Faroeste Caboclo.mp3", // ⬅ Nome corrigido!
       name: "Faroeste Caboclo",
       cover: "./capas/faroeste.jpg",
     },
+    {
+      src: "./musicas/bah.mp3", // ⬅ Nome corrigido!
+      name: "Labrinth - I'm Tired ",
+      cover: "./capas/Céu.jpg",
+    },
+    
     {
         src: "./musicas/Black.mp3", // ⬅ Nome corrigido!
         name: "Black",
@@ -20,21 +26,13 @@ export default [
         name: "JoJo's Bizarre Adventure - Opening 2",
         cover: "./capas/joseph1.jpg",
       },
-      {
-        src: "./musicas/bah.mp3", // ⬅ Nome corrigido!
-        name: "Labrinth - I'm Tired ",
-        cover: "./capas/céu.jpg",
-      },
+    
       {
         src: "./musicas/holy.mp3", // ⬅ Nome corrigido!
         name: "Dio - Holy Diver ",
         cover: "./capas/dio.jpg",
       },
 
-      
-    
-      
 
-     
       
 ];
