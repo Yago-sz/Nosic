@@ -286,3 +286,14 @@ body .all{
     display: flex; /* A imagem se comporta como bloco */
 }
 
+@media (max-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
