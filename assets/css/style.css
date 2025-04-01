@@ -355,3 +355,12 @@ body .all{
         font-size: 12px; /* Tamanho da fonte menor em telas pequenas */
     }
 }
+
+/* Para telas pequenas */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: row;   /* Garante que os botões fiquem em uma linha */
+        justify-content: center;  /* Alinha ao centro */
+        gap: 15px;             /* Ajusta o espaço entre os botões */
+    }
+}
