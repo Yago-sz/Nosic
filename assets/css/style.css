@@ -302,3 +302,61 @@ body .all{
     height: auto;
   }
 
+/* Adaptação para telas pequenas (Celulares) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .menu-lateral {
+        display: none; /* Exemplo de esconder o menu lateral em telas pequenas */
+    }
+
+    .headbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .player {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .progress-bar {
+        width: 80%; /* Reduzindo a largura da barra de progresso */
+    }
+}
+
+/* Estilos para telas muito pequenas (por exemplo, smartphones em modo retrato) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 16px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .progress-bar {
+        width: 90%; /* Barra de progresso mais larga */
+    }
+
+    .time {
+        font-size: 12px; /* Tamanho da fonte menor em telas pequenas */
+    }
+}
