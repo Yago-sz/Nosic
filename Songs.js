@@ -5,6 +5,11 @@ export default [
     name: "Afterlife - Evanescence",
     cover: "./capas/Devil.jpg",
   },
+  {
+    src: "./musicas/acdc.mp3", // ⬅ Nome corrigido!
+    name: "AC/DC - Back In Black ",
+    cover: "./capas/acdc.jpg",
+  },
     {
       src: "./musicas/Faroeste Caboclo.mp3", // ⬅ Nome corrigido!
       name: "Faroeste Caboclo",
