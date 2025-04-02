@@ -76,7 +76,7 @@
                 <button id="prevButton"><i class="bx bx-skip-previous"></i></button>
                 <button id="playPauseButton"><i class="bx bx-caret-right"></i></button>
                 <button id="nextButton"><i class="bx bx-skip-next"></i></button>
-                
+                <button id="commentButton"><i class="bi bi-chat-dots"></i></button>
             </div>
             <div class="footer">
                 <div class="progress-bar">
@@ -90,6 +90,15 @@
         </div>
     </nav>
 
+    <div id="commentPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Comentários</h2>
+            <div id="commentsList"></div>
+            <textarea id="commentInput" placeholder="Digite a sua opinião..."></textarea>
+            <button id="submitComment">Enviar</button>
+        </div>
+    </div>
 
     <script src="menu.js"></script>
     <script src="Comments.js"></script>
