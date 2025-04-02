@@ -147,3 +147,6 @@ function alterarImagemCapa(caminhoImagem) {
   }
   
   carregarMusica(musica);
+
+  
+ 
