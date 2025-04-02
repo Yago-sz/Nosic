@@ -136,20 +136,44 @@
     
         // Garante que no desktop ambos fiquem visíveis
         function adjustLayout() {
-            if (window.innerWidth > 768) {
-                document.querySelector('.player').style.display = "flex";
-                document.querySelector('.Coment').style.display = "block";
-            } else {
-                document.querySelector('.player').style.display = "flex";
-                document.querySelector('.Coment').style.display = "none";
-            }
-        }
+          document.addEventListener("DOMContentLoaded", function () {
+    let textarea = document.getElementById("inputText");
+    let commentSection = document.querySelector(".Coment");
 
-        
-    
-        // Chamando no início
-        adjustLayout();
-        window.addEventListener('resize', adjustLayout);
+    // Mantém a rolagem na área de comentários quando o usuário toca no input
+    textarea.addEventListener("focus", function () {
+        setTimeout(() => {
+            commentSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    let textarea = document.getElementById("inputText");
+    let commentSection = document.querySelector(".Coment");
+
+    // Quando o usuário tocar no campo de texto, mantém a rolagem na seção de comentários
+    textarea.addEventListener("focus", function () {
+        setTimeout(() => {
+            commentSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 200);
+    });
+
+    // Se o teclado aparecer, mantém a rolagem fixa na seção de comentários
+    window.addEventListener("resize", function () {
+        if (document.activeElement === textarea) {
+            setTimeout(() => {
+                commentSection.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 200);
+        }
+    });
+
+    // Impede que qualquer clique fora do player ou comentários faça a tela rolar para o topo
+    document.body.addEventListener("touchmove", function (e) {
+        if (document.activeElement === textarea) {
+            e.preventDefault(); // Bloqueia a rolagem automática para o topo
+        }
+    }, { passive: false });
+});
     </script>
 
  
