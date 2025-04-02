@@ -450,13 +450,9 @@ textarea {
 
 #adminLogin {
     position: absolute; /* Ou relative, fixed, depende do efeito que quer */
-    top: 10px;  /* Distância do topo */
-    left: 10px;
+    top: 100px;  /* Distância do topo */
+    left: 100px;
     padding: 10px 15px; /* Ajuste de tamanho */
-    font-size: 10px;
-    border-radius: 30px;
-    align-items: center;
-    justify-content: center;
 }
 #rotate-warning {
     display: none;

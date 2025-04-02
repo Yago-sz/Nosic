@@ -60,7 +60,10 @@
             <img src="/imagem/headphone (3).png" alt="image">
             <span style="font-family: music;">Nosic</span>
         </div>
-       
+        <div class="right-icons">
+            <i class="fas fa-broadcast-tower"></i>
+            <img class="profile-img" src="https://via.placeholder.com/30" alt="Perfil">
+        </div>
         
     </header>
     <div class="Coment">
@@ -116,40 +119,27 @@
     </nav>
     <button id="adminLogin" class="btn btn-warning">Modo Admin</button>
    
-    <button class="btn-toggle" onclick="toggleSections()">Alternar Player/Comentários</button>
+    <div id="rotate-warning">
+        <p>Gire o celular para visualizar os comentários</p>
+    </div>
+
     <script src="menu.js"></script>
     <script src="Comments.js"></script>
 
     <script>
-        function toggleSections() {
-            let player = document.querySelector('.player');
-            let comments = document.querySelector('.Coment');
-    
-            if (player.style.display === "none") {
-                player.style.display = "flex";
-                comments.style.display = "none";
+        function checkOrientation() {
+            if (window.innerWidth < window.innerHeight) {
+                document.getElementById("rotate-warning").style.display = "flex";
             } else {
-                player.style.display = "none";
-                comments.style.display = "block";
+                document.getElementById("rotate-warning").style.display = "none";
             }
         }
-    
-        // Garante que no desktop ambos fiquem visíveis
-        function adjustLayout() {
-            if (window.innerWidth > 768) {
-                document.querySelector('.player').style.display = "flex";
-                document.querySelector('.Coment').style.display = "block";
-            } else {
-                document.querySelector('.player').style.display = "flex";
-                document.querySelector('.Coment').style.display = "none";
-            }
-        }
-    
-        // Chamando no início
-        adjustLayout();
-        window.addEventListener('resize', adjustLayout);
-    </script>
-
- 
+        
+        // Verifica a orientação inicial
+        checkOrientation();
+        
+        // Adiciona um evento para detectar mudança de orientação
+        window.addEventListener("resize", checkOrientation);
+        </script>
 </body>
 </html>
