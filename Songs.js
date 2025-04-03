@@ -1,6 +1,18 @@
 export default [
     
   {
+    src: "./musicas/feel.mp3", // ⬅ Nome corrigido!
+    name: "d4vd - Feel It",
+    cover: "./capas/feel.jpg",
+  },
+  {
+    src: "./musicas/billy.mp3", // ⬅ Nome corrigido!
+    name: "Billy Joel - Vienna",
+    cover: "./capas/viena.jpg",
+  },
+
+  {
+    
     src: "./musicas/devil.mp3", // ⬅ Nome corrigido!
     name: "Afterlife - Evanescence",
     cover: "./capas/Devil.jpg",
@@ -10,15 +22,30 @@ export default [
     name: "AC/DC - Back In Black ",
     cover: "./capas/acdc.jpg",
   },
+  {
+    src: "./musicas/sun.mp3", // ⬅ Nome corrigido!
+    name: "The Beatles - Here Comes The Sun",
+    cover: "./capas/sun.jpg",
+  },
     {
       src: "./musicas/Faroeste Caboclo.mp3", // ⬅ Nome corrigido!
       name: "Faroeste Caboclo",
       cover: "./capas/faroeste.jpg",
     },
     {
+      src: "./musicas/secret.mp3", // ⬅ Nome corrigido!
+      name: "Do You Want To Know A Secret",
+      cover: "./capas/secret.jpg",
+    },
+    {
       src: "./musicas/tim.mp3", // ⬅ Nome corrigido!
       name: "Timbaland - Apologize ft. OneRepublic",
       cover: "./capas/apolo.jpg",
+    },
+    {
+      src: "./musicas/quis.mp3", // ⬅ Nome corrigido!
+      name: "Maneva - o destino não quis",
+      cover: "./capas/quis.jpg",
     },
     {
       src: "./musicas/bah.mp3", // ⬅ Nome corrigido!
@@ -53,17 +80,10 @@ export default [
         cover: "./capas/lauu.jpg",
       },
 
-
-      {
-        src: "./musicas/billy.mp3", // ⬅ Nome corrigido!
-        name: "Billy Joel - Vienna",
-        cover: "./capas/viena.jpg",
-      },
-
       {
         src: "./musicas/vi.mp3", // ⬅ Nome corrigido!
         name: "Faroeste Caboclo",
-        cover: "./capas/faroeste.jpg",
+        cover: "./capas/vi.jpg",
       },
 
       
