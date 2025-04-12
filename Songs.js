@@ -1,5 +1,11 @@
 export default [
   {
+    id: "musica6",  // ID da música
+    src: "./musicas/elvis.mp3",
+    name: "Wonder of U",
+    cover: "./capas/elvis.jpg",
+  },
+  {
     id: "musica_1",  // ID da música
     src: "./musicas/feel.mp3",
     name: "d4vd - Feel It",
@@ -16,6 +22,12 @@ export default [
     src: "./musicas/devil.mp3",
     name: "Afterlife - Evanescence",
     cover: "./capas/Devil.jpg",
+  },
+  {
+    id: "musica4",  // ID da música
+    src: "./musicas/djavan.mp3",
+    name: "Djavan – Oceano",
+    cover: "./capas/djavan.jpg",
   },
   {
     id: "musica4",  // ID da música
@@ -40,6 +52,12 @@ export default [
     src: "./musicas/secret.mp3",
     name: "Do You Want To Know A Secret",
     cover: "./capas/secret.jpg",
+  },
+  {
+    id: "musica6",  // ID da música
+    src: "./musicas/alicia.mp3",
+    name: "Alicia Keys - Fallin",
+    cover: "./capas/alicia.jpg",
   },
   {
     id: "musica8",  // ID da música
