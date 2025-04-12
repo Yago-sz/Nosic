@@ -70,16 +70,14 @@
     <div class="Coment">
         <form id="formulario" class="rounde-2 p-3 w-50">
             <h1 class="opinion mb-2">Diga sua opinião!</h1>
-        
+    
             <div class="mb-2">
                 <textarea class="comment-text" rows="4"  id="inputText"  placeholder="Digite seu julgamento..."  ></textarea>
             </div>
-        
+    
             <div class="julgar">
                 <button type="submit" class="btn-enviar">Comentar</button>
-            </div>
-        </form>
-                <div class="container-coment" id="commentPost" >    
+                <div class="container-coment" id="commentPost" >
                     <div class="text-coment"> 
                         <h5>Comentarios</h5>
                        
@@ -156,12 +154,12 @@
         adjustLayout();
         window.addEventListener('resize', adjustLayout);
     </script>
-<!-- Firebase compat -->
+<!-- Firebase App (core SDK) -->
 <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+<!-- Firebase Realtime Database -->
 <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
 
 <script>
-  // Configuração do Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyAj0AEdWvXFgC9YKza5tDK4zSzAxDxPa6g",
     authDomain: "comentarios-71b56.firebaseapp.com",
@@ -177,40 +175,18 @@
   const app = firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
-  const formulario = document.getElementById('formulario');
-  const inputText = document.getElementById('inputText');
-  const commentPost = document.getElementById('commentPost');
-
-  // Enviar comentário
-  formulario.addEventListener('submit', function(e) {
+  // Exemplo de envio de comentário
+  document.getElementById('formulario').addEventListener('submit', function(e) {
     e.preventDefault();
-    const texto = inputText.value.trim();
-    if (texto === '') return;
+    const texto = document.getElementById('inputText').value;
+    if (texto.trim() === '') return;
 
     db.ref('comentarios').push({
       texto: texto,
       timestamp: new Date().toISOString()
     });
 
-    inputText.value = '';
-  });
-
-  // Função para adicionar comentário na tela
-  function adicionarComentarioNaTela(texto, timestamp) {
-    const comentarioDiv = document.createElement('div');
-    comentarioDiv.classList.add('comentario-individual');
-    comentarioDiv.innerHTML = `
-      <p>${texto}</p>
-      <small>${new Date(timestamp).toLocaleString('pt-BR')}</small>
-      <hr>
-    `;
-    commentPost.appendChild(comentarioDiv);
-  }
-
-  // Carrega todos os comentários em tempo real
-  db.ref('comentarios').on('child_added', function(snapshot) {
-    const comentario = snapshot.val();
-    adicionarComentarioNaTela(comentario.texto, comentario.timestamp);
+    document.getElementById('inputText').value = '';
   });
 </script>
 </body>

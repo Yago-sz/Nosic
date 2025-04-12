@@ -144,4 +144,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('resize', adjustLayout);
     document.addEventListener("DOMContentLoaded", adjustLayout);
 });
-

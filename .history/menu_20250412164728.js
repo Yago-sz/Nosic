@@ -145,3 +145,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("DOMContentLoaded", adjustLayout);
 });
 
+// Importando Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+
+// Configuração do Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAj0AEdWvXFgC9YKza5tDK4zSzAxDxPa6g",
+  authDomain: "comentarios-71b56.firebaseapp.com",
+  databaseURL: "https://comentarios-71b56-default-rtdb.firebaseio.com",
+  projectId: "comentarios-71b56",
+  storageBucket: "comentarios-71b56.firebasestorage.app",
+  messagingSenderId: "440922051626",
+  appId: "1:440922051626:web:0c87bcd54a2d842a725f53",
+  measurementId: "G-0TS04ED0GE"
+};
