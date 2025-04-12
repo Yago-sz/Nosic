@@ -111,5 +111,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Carrega comentários ao entrar na página
     displayComments();
+    // Função para alternar entre o player e os comentários
+function toggleSections() {
+    let player = document.querySelector('.player');
+    let comments = document.querySelector('.Coment');
+
+    // Verifica se os comentários estão visíveis ou não
+    if (player.style.display === "none") {
+        player.style.display = "flex";
+        comments.style.display = "none";
+    } else {
+        player.style.display = "none";
+        comments.style.display = "block";
+    }
+}
+
+// Função para detectar a rolagem e mostrar a seção de comentários
+function handleScroll() {
+    const commentSection = document.getElementById('commentSection');
+    const player = document.querySelector('.player');
     
+    // Verifica se a seção de comentários está visível na tela
+    const rect = commentSection.getBoundingClientRect();
+    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+        // Quando a seção de comentários estiver visível
+        player.style.display = "none";  // Esconde o player
+        commentSection.style.display = "block";  // Mostra a seção de comentários
+    }
+}
+
+// Adiciona o ouvinte de evento para o scroll
+window.addEventListener('scroll', handleScroll);
 });
