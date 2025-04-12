@@ -130,16 +130,17 @@ function toggleSections() {
 function handleScroll() {
     // Verifica se o dispositivo é móvel
     if (window.innerWidth <= 768) { // Ajuste o valor de 768 conforme necessário
-        const commentSection = document.querySelector('.Coment');
+        const commentSection = document.getElementById('commentSection');
         const player = document.querySelector('.player');
 
-        // Se a rolagem estiver abaixo da altura da tela, mostramos os comentários e ocultamos o player
-        if (window.scrollY > 200) { // Ajuste o valor 200 conforme necessário para ativar a transição
-            player.style.display = "none"; // Esconde o player
-            commentSection.style.display = "block"; // Exibe a seção de comentários
-        } else {
-            player.style.display = "flex"; // Mostra o player
-            commentSection.style.display = "none"; // Esconde a seção de comentários
+        // Verifica a posição da seção de comentários
+        const rect = commentSection.getBoundingClientRect();
+
+        // Se a seção de comentários estiver visível na tela
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            // Exibe a aba de comentários e esconde o player
+            player.style.display = "none";
+            commentSection.style.display = "block";
         }
     }
 }

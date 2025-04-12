@@ -302,7 +302,7 @@ body .all{
 
 
 .Coment {
-    position: fixed; /* Ou use position: fixed; se quiser fixo na tela */
+    position: absolute; /* Ou use position: fixed; se quiser fixo na tela */
     right: 300px; /* Ajuste conforme necessário */
     top: 150px; /* Ajuste conforme necessário */
     width: 320px; /* Define um tamanho menor */
@@ -448,7 +448,7 @@ textarea {
         height: auto;
         padding: 15px;
         border-radius: 8px;
-
+        display: none; /* Inicialmente oculta, depois exibe com JavaScript */
     }
 }
 @media (max-width: 768px) {
@@ -461,74 +461,44 @@ textarea {
         padding: 12px 20px; /* Ajuste o tamanho do botão */
         font-size: 18px; /* Tamanho menor do texto */
     }
-
-    @media (max-width: 768px) {
-        .btn-toggle {
-          display: none !important;
-        }
-      
-        .Coment {
-          position: static !important;
-          width: 100%;
-          margin: 20px auto 0 auto;
-          padding: 10px;
-          background-color: transparent;
-          box-shadow: none;
-        }
-      
-        .comentarios-lista {
-          margin-top: 10px;
-        }
-      
-        #formulario {
-          width: 100%;
-        }
-      
-        textarea {
-          width: 100%;
-          font-size: 16px;
-        }
-      
-        .btn-enviar {
-          width: 100%;
-          font-size: 16px;
-        }
-      }
+}@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Reduz o tamanho da fonte */
     }
-    /* Estilização da seção de comentários no celular */
+
+    .headbar {
+        padding: 10px 15px; /* Ajuste o padding da barra superior */
+        font-size: 16px; /* Ajuste o tamanho da fonte */
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .right-icons i {
+        font-size: 16px; /* Ícones menores em dispositivos móveis */
+    }
+}
 @media (max-width: 768px) {
-    .Coment {
-      display: block !important;   /* Garante que fique visível */
-      position: static !important; /* Remove o fixed */
-        order: 2; /* Coloca depois do player */
+    .comentarios {
+        display: block; /* Garante que a seção de comentários seja exibida em telas pequenas */
+        width: 100%; /* Ajusta o tamanho da seção para ocupar toda a largura */
     }
 
-    .player {
-        order: 1; /* Coloca antes dos comentários */
+    .comentarios h2 {
+        font-size: 20px;
     }
 
-    .all {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    #comentario {
+        width: 100%; /* Faz o textarea ocupar a largura disponível */
     }
-  
-    .btn-toggle {
-      display: none !important; /* Oculta o botão no celular */
-    }
-  
-    textarea {
-      width: 100%;
-      font-size: 16px;
-    }
-  
-    .btn-enviar {
-      width: 100%;
-      font-size: 16px;
-    }
-  
+
     .comentarios-lista {
-      margin-top: 15px;
+        margin-top: 10px;
     }
-  }
-  
+}
+@media (max-width: 768px) {
+    .player, .Coment {
+        transition: all 0.5s ease-in-out;
+    }
+}

@@ -126,29 +126,20 @@ function toggleSections() {
     }
 }
 
-// Função que lida com a rolagem da página
+// Função para detectar a rolagem e mostrar a seção de comentários
 function handleScroll() {
-    // Verifica se o dispositivo é móvel
-    if (window.innerWidth <= 768) { // Ajuste o valor de 768 conforme necessário
-        const commentSection = document.querySelector('.Coment');
-        const player = document.querySelector('.player');
-
-        // Se a rolagem estiver abaixo da altura da tela, mostramos os comentários e ocultamos o player
-        if (window.scrollY > 200) { // Ajuste o valor 200 conforme necessário para ativar a transição
-            player.style.display = "none"; // Esconde o player
-            commentSection.style.display = "block"; // Exibe a seção de comentários
-        } else {
-            player.style.display = "flex"; // Mostra o player
-            commentSection.style.display = "none"; // Esconde a seção de comentários
-        }
+    const commentSection = document.getElementById('commentSection');
+    const player = document.querySelector('.player');
+    
+    // Verifica se a seção de comentários está visível na tela
+    const rect = commentSection.getBoundingClientRect();
+    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+        // Quando a seção de comentários estiver visível
+        player.style.display = "none";  // Esconde o player
+        commentSection.style.display = "block";  // Mostra a seção de comentários
     }
 }
 
-// Adiciona o ouvinte de evento para a rolagem
+// Adiciona o ouvinte de evento para o scroll
 window.addEventListener('scroll', handleScroll);
-
-// Função para garantir que o layout esteja correto quando a página carregar
-window.addEventListener('load', function() {
-    handleScroll(); // Verifica a posição inicial da tela
-});
 });

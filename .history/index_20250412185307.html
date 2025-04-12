@@ -67,7 +67,25 @@
        
         
     </header>
+<!-- Seção de Comentários -->
+<div class="Coment" id="commentSection">
+    <form id="formulario" class="rounded-2 p-3 w-50">
+        <h1 class="opinion mb-2">Diga sua opinião!</h1>
 
+        <div class="mb-2">
+            <textarea class="comment-text" rows="4" id="inputText" placeholder="Digite seu julgamento..."></textarea>
+        </div>
+
+        <div class="julgar">
+            <button type="submit" class="btn-enviar">Comentar</button>
+        </div>
+    </form>
+    <div class="container-coment" id="commentPost">
+        <div class="text-coment">
+            <h5>Comentários</h5>
+        </div>
+    </div>
+</div>
 
     
  
@@ -76,49 +94,30 @@
  </div>
 
 
- <!-- ENVOLVE player E comentários EM UMA DIV 'all' -->
-<div class="all">
-    <!-- Player -->
-    <div class="player">
-        <div class="cover-container">
-            <img id="musicCover" src="" alt="Capa da música">
-        </div>
-        <span id="musicName"></span>
-        <audio id="player" src=""></audio>
-        <div class="controls">
-            <button id="prevButton"><i class="bx bx-skip-previous"></i></button>
-            <button id="playPauseButton"><i class="bx bx-caret-right"></i></button>
-            <button id="nextButton"><i class="bx bx-skip-next"></i></button>
-        </div>
-        <div class="footer">
-            <div class="progress-bar">
-                <div class="progress"></div>
+    <nav class="all">
+        <div class="player">
+            <div class="cover-container">
+                <img id="musicCover" src="" alt="Capa da música">
             </div>
-            <div class="time">
-                <span id="currentTime">0:00</span>
-                <span id="duration">0:00</span>
+            <span id="musicName"></span>
+            <audio id="player" src=""></audio>
+            <div class="controls">
+                <button id="prevButton"><i class="bx bx-skip-previous"></i></button>
+                <button id="playPauseButton"><i class="bx bx-caret-right"></i></button>
+                <button id="nextButton"><i class="bx bx-skip-next"></i></button>
+                
             </div>
-        </div>
-    </div>
-
-    <!-- Comentários (agora logo abaixo do player no HTML) -->
-    <div class="Coment" id="commentSection">
-        <form id="formulario" class="rounded-2 p-3 w-50">
-            <h1 class="opinion mb-2">Diga sua opinião!</h1>
-            <div class="mb-2">
-                <textarea class="comment-text" rows="4" id="inputText" placeholder="Digite seu julgamento..."></textarea>
-            </div>
-            <div class="julgar">
-                <button type="submit" class="btn-enviar">Comentar</button>
-            </div>
-        </form>
-        <div class="container-coment" id="commentPost">
-            <div class="text-coment">
-                <h5>Comentários</h5>
+            <div class="footer">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="time">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </nav>
     <script src="menu.js"></script>
     <script src="Comments.js"></script>
     <button id="adminLogin" class="btn btn-warning">Modo Admin</button>

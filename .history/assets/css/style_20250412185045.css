@@ -500,17 +500,12 @@ textarea {
     .Coment {
       display: block !important;   /* Garante que fique visível */
       position: static !important; /* Remove o fixed */
-        order: 2; /* Coloca depois do player */
-    }
-
-    .player {
-        order: 1; /* Coloca antes dos comentários */
-    }
-
-    .all {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      width: 100%;
+      margin: 20px auto 0 auto;
+      padding: 10px;
+      background-color: transparent;
+      box-shadow: none;
+      margin-top: 20px;
     }
   
     .btn-toggle {
@@ -531,4 +526,3 @@ textarea {
       margin-top: 15px;
     }
   }
-  
