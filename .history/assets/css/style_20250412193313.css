@@ -540,11 +540,4 @@ textarea {
 .comment-text{
   font-size: 20px;
 }
-@media (max-width: 768px) {
-    textarea {
-        font-size: 16px; /* Tamanho da fonte no celular */
-        width: 100%; /* Garante que ocupe toda a largura */
-        min-height: 100px; /* Altura mínima */
-        resize: vertical; /* Permite redimensionar verticalmente */
-    }
-}
+  

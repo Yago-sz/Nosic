@@ -540,11 +540,20 @@ textarea {
 .comment-text{
   font-size: 20px;
 }
+  
 @media (max-width: 768px) {
+    /* Ajusta o tamanho da caixa de texto no celular */
     textarea {
-        font-size: 16px; /* Tamanho da fonte no celular */
-        width: 100%; /* Garante que ocupe toda a largura */
-        min-height: 100px; /* Altura mínima */
-        resize: vertical; /* Permite redimensionar verticalmente */
+        width: 100%; /* Ocupa toda a largura disponível */
+        height: 120px; /* Aumenta a altura do campo de texto */
+        font-size: 18px; /* Aumenta o tamanho da fonte para facilitar a leitura */
+        padding: 15px; /* Aumenta o padding para melhorar a experiência de digitação */
+    }
+
+    /* Ajusta o tamanho do botão de envio também */
+    .btn-enviar {
+        width: 100%; /* Faz o botão ocupar toda a largura */
+        font-size: 18px; /* Aumenta o tamanho da fonte */
+        padding: 15px 20px; /* Ajusta o tamanho do botão */
     }
 }

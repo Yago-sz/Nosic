@@ -130,12 +130,5 @@ function formatTimestamp(timestamp) {
 
     // Carrega comentários ao entrar na página
     displayComments();
-
-    const textarea = document.querySelector('textarea');
-
-textarea.addEventListener('input', function() {
-    this.style.height = 'auto';  // Reseta a altura para recalcular
-    this.style.height = (this.scrollHeight) + 'px';  // Ajusta a altura conforme o conteúdo
-});
     
 });

@@ -541,10 +541,14 @@ textarea {
   font-size: 20px;
 }
 @media (max-width: 768px) {
+    /* Ajusta a largura e altura do campo de texto */
     textarea {
-        font-size: 16px; /* Tamanho da fonte no celular */
-        width: 100%; /* Garante que ocupe toda a largura */
-        min-height: 100px; /* Altura mínima */
-        resize: vertical; /* Permite redimensionar verticalmente */
+        width: 100% !important; /* Garante que ocupe toda a largura disponível */
+        height: 100px !important; /* Aumenta a altura para dar mais espaço */
+        font-size: 18px !important; /* Aumenta o tamanho da fonte para melhor legibilidade */
+        padding: 15px !important; /* Aumenta o padding para melhorar a experiência de digitação */
+        
     }
+
+
 }

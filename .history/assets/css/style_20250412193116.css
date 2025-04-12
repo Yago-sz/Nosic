@@ -331,7 +331,7 @@ textarea {
     box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho total */
     background-color: #0c030e;
     color:white ;
-    border-radius: 20px;
+    border-radius: 50px;
     font-size: 200px;
     font-family: 'poppins';
     border: none;
@@ -540,11 +540,4 @@ textarea {
 .comment-text{
   font-size: 20px;
 }
-@media (max-width: 768px) {
-    textarea {
-        font-size: 16px; /* Tamanho da fonte no celular */
-        width: 100%; /* Garante que ocupe toda a largura */
-        min-height: 100px; /* Altura mínima */
-        resize: vertical; /* Permite redimensionar verticalmente */
-    }
-}
+  

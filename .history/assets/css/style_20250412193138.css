@@ -327,7 +327,8 @@ body .all{
 textarea {
     width: 450px; /* Faz o textarea ocupar toda a largura do formulário */
     min-width: 100%; /* Define um tamanho mínimo para evitar que fique muito estreito */
-    height: 80px; /* Ajuste conforme necessário */
+    height: 80px; 
+    width: 200px;/* Ajuste conforme necessário */
     box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho total */
     background-color: #0c030e;
     color:white ;
@@ -540,11 +541,4 @@ textarea {
 .comment-text{
   font-size: 20px;
 }
-@media (max-width: 768px) {
-    textarea {
-        font-size: 16px; /* Tamanho da fonte no celular */
-        width: 100%; /* Garante que ocupe toda a largura */
-        min-height: 100px; /* Altura mínima */
-        resize: vertical; /* Permite redimensionar verticalmente */
-    }
-}
+  
