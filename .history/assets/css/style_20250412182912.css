@@ -461,39 +461,4 @@ textarea {
         padding: 12px 20px; /* Ajuste o tamanho do botão */
         font-size: 18px; /* Tamanho menor do texto */
     }
-}@media (max-width: 768px) {
-    body {
-        font-size: 14px; /* Reduz o tamanho da fonte */
-    }
-
-    .headbar {
-        padding: 10px 15px; /* Ajuste o padding da barra superior */
-        font-size: 16px; /* Ajuste o tamanho da fonte */
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    .right-icons i {
-        font-size: 16px; /* Ícones menores em dispositivos móveis */
-    }
-}
-@media (max-width: 768px) {
-    .comentarios {
-        display: block; /* Garante que a seção de comentários seja exibida em telas pequenas */
-        width: 100%; /* Ajusta o tamanho da seção para ocupar toda a largura */
-    }
-
-    .comentarios h2 {
-        font-size: 20px;
-    }
-
-    #comentario {
-        width: 100%; /* Faz o textarea ocupar a largura disponível */
-    }
-
-    .comentarios-lista {
-        margin-top: 10px;
-    }
 }

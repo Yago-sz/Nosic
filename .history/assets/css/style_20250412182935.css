@@ -479,21 +479,3 @@ textarea {
         font-size: 16px; /* Ícones menores em dispositivos móveis */
     }
 }
-@media (max-width: 768px) {
-    .comentarios {
-        display: block; /* Garante que a seção de comentários seja exibida em telas pequenas */
-        width: 100%; /* Ajusta o tamanho da seção para ocupar toda a largura */
-    }
-
-    .comentarios h2 {
-        font-size: 20px;
-    }
-
-    #comentario {
-        width: 100%; /* Faz o textarea ocupar a largura disponível */
-    }
-
-    .comentarios-lista {
-        margin-top: 10px;
-    }
-}
