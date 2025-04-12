@@ -5,6 +5,7 @@ function getMusicId() {
     return songs[index].id;  // Pegando o ID da música com base no índice atual
 }
 
+
 // Selecionando elementos do player
 const player = document.querySelector("#player");
 const musicName = document.querySelector("#musicName");
@@ -194,43 +195,57 @@ function addCommentToScreen(comment) {
     p.innerHTML = `<strong>${comment}</strong>`;
     commentPost.appendChild(p);
 }
-formulario.addEventListener('submit', function(e) {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const texto = inputText.value.trim();
-    if (texto === '') return;
+    const texto = textComent.value.trim();
+    if (texto === "") return;
   
-    const musicaId = getMusicaAtualId();
-  
-    function carregarComentarios() {
-        const musicaId = getMusicaAtualId();
-        commentPost.innerHTML = ''; // limpa os antigos
-      
-        db.ref(`comentarios/${musicaId}`).off(); // remove listeners antigos
-      
-        db.ref(`comentarios/${musicaId}`).on('child_added', function(snapshot) {
-          const comentario = snapshot.val();
-          adicionarComentarioNaTela(comentario.texto, comentario.timestamp);
-        });
-      }
-    inputText.value = '';   
-
-    // Salva o novo comentário no Firebase
+    const musicId = getCurrentMusicId(); // ← ID da música atual
+    const commentsRef = ref(db, 'comentarios/' + musicId);
     const newCommentRef = push(commentsRef);
+  
     set(newCommentRef, {
-        text: commentText,
-        timestamp: new Date().toISOString()
-    }).then(() => {
-        addCommentToScreen(commentText);  // Exibe o comentário na tela
-        textComent.value = "";  // Limpa o campo de texto
-    }).catch((error) => {
-        console.error("Erro ao salvar comentário:", error);
+      text: texto,
+      timestamp: new Date().toISOString()
     });
+  
+    textComent.value = "";
+  });
 });
-function getMusicaAtualId() {
-    const nome = document.getElementById('musicName').innerText;
-    // Transforma em um ID seguro (ex: "Lo-Fi Beats" -> "lo-fi-beats")
-    return nome.trim().toLowerCase().replace(/\s+/g, '-');
-  }
+import { getDatabase, ref, onValue, push, set } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
-    
-});
+const db = getDatabase();
+
+// Limpa comentários antigos e carrega os novos
+function carregarComentarios() {
+  const commentPost = document.getElementById("commentPost");
+  commentPost.innerHTML = "<h5>Comentários</h5>";
+
+  const musicId = getCurrentMusicId();
+  const commentsRef = ref(db, 'comentarios/' + musicId);
+
+  onValue(commentsRef, (snapshot) => {
+    commentPost.innerHTML = "<h5>Comentários</h5>"; // limpa de novo, só por segurança
+    const comments = snapshot.val();
+
+    if (comments) {
+      Object.values(comments).forEach(comment => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <p>${comment.text}</p>
+          <small>${new Date(comment.timestamp).toLocaleString('pt-BR')}</small>
+          <hr>
+        `;
+        commentPost.appendChild(div);
+      });
+    } else {
+      commentPost.innerHTML += "<p><em>Nenhum comentário ainda.</em></p>";
+    }
+  });
+}
+document.getElementById("nextButton").addEventListener("click", () => {
+    // trocar música...
+    tocarProximaMusica();
+    carregarComentarios(); // <- aqui!
+  });
+  

@@ -4,6 +4,10 @@ import songs from "./Songs.js"; // Supondo que 'Songs.js' contém informações 
 function getMusicId() {
     return songs[index].id;  // Pegando o ID da música com base no índice atual
 }
+import { getDatabase, ref, onValue, push, set } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+const db = getDatabase();
+
 
 // Selecionando elementos do player
 const player = document.querySelector("#player");
@@ -194,25 +198,18 @@ function addCommentToScreen(comment) {
     p.innerHTML = `<strong>${comment}</strong>`;
     commentPost.appendChild(p);
 }
-formulario.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const texto = inputText.value.trim();
-    if (texto === '') return;
-  
-    const musicaId = getMusicaAtualId();
-  
-    function carregarComentarios() {
-        const musicaId = getMusicaAtualId();
-        commentPost.innerHTML = ''; // limpa os antigos
-      
-        db.ref(`comentarios/${musicaId}`).off(); // remove listeners antigos
-      
-        db.ref(`comentarios/${musicaId}`).on('child_added', function(snapshot) {
-          const comentario = snapshot.val();
-          adicionarComentarioNaTela(comentario.texto, comentario.timestamp);
-        });
-      }
-    inputText.value = '';   
+// Evento para adicionar comentários
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const musicId = getMusicId();  // Obtém o ID da música atual
+    const commentText = textComent.value.trim();
+
+    if (commentText === "") {
+        return; // Impede comentários vazios
+    }
+
+    const commentsRef = ref(db, 'comentarios/' + musicId); // Referência para o nó de comentários da música
 
     // Salva o novo comentário no Firebase
     const newCommentRef = push(commentsRef);
@@ -226,11 +223,34 @@ formulario.addEventListener('submit', function(e) {
         console.error("Erro ao salvar comentário:", error);
     });
 });
-function getMusicaAtualId() {
-    const nome = document.getElementById('musicName').innerText;
-    // Transforma em um ID seguro (ex: "Lo-Fi Beats" -> "lo-fi-beats")
-    return nome.trim().toLowerCase().replace(/\s+/g, '-');
-  }
+
 
     
 });
+// Limpa comentários antigos e carrega os novos
+function carregarComentarios() {
+    const commentPost = document.getElementById("commentPost");
+    commentPost.innerHTML = "<h5>Comentários</h5>";
+  
+    const musicId = getCurrentMusicId();
+    const commentsRef = ref(db, 'comentarios/' + musicId);
+  
+    onValue(commentsRef, (snapshot) => {
+      commentPost.innerHTML = "<h5>Comentários</h5>"; // limpa de novo, só por segurança
+      const comments = snapshot.val();
+  
+      if (comments) {
+        Object.values(comments).forEach(comment => {
+          const div = document.createElement("div");
+          div.innerHTML = `
+            <p>${comment.text}</p>
+            <small>${new Date(comment.timestamp).toLocaleString('pt-BR')}</small>
+            <hr>
+          `;
+          commentPost.appendChild(div);
+        });
+      } else {
+        commentPost.innerHTML += "<p><em>Nenhum comentário ainda.</em></p>";
+      }
+    });
+  }

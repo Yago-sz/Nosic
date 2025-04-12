@@ -68,17 +68,17 @@
         
     </header>
     <div class="Coment">
-       <form id="formulario" class="rounde-2 p-3 w-50">
-    <h1 class="opinion mb-2">Diga sua opinião!</h1>
-
-    <div class="mb-2">
-        <textarea class="comment-text" rows="4"  id="inputText"  placeholder="Digite seu julgamento..."  ></textarea>
-    </div>
-
-    <div class="julgar">
-        <button type="submit" class="btn-enviar">Comentar</button>
-    </div>
-</form>
+        <form id="formulario" class="rounde-2 p-3 w-50">
+            <h1 class="opinion mb-2">Diga sua opinião!</h1>
+        
+            <div class="mb-2">
+                <textarea class="comment-text" rows="4"  id="inputText"  placeholder="Digite seu julgamento..."  ></textarea>
+            </div>
+        
+            <div class="julgar">
+                <button type="submit" class="btn-enviar">Comentar</button>
+            </div>
+        </form>
                 <div class="container-coment" id="commentPost" >    
                     <div class="text-coment"> 
                         <h5>Comentarios</h5>
@@ -156,10 +156,6 @@
         adjustLayout();
         window.addEventListener('resize', adjustLayout);
     </script>
-<!-- Firebase compat -->
-<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
-
 <script>
     // Configuração do Firebase
     const firebaseConfig = {
@@ -182,12 +178,14 @@
     const commentPost = document.getElementById('commentPost');
     const player = document.getElementById('player');
   
-    // Função para obter um ID único da música atual
+    let currentMusicId = null;
+  
+    // Gera um ID único da música com base na URL do player
     function getMusicId() {
-      return player ? player.src.split("/").pop().split('.')[0] : "default"; // Retorna o nome do arquivo sem extensão
+      return player?.src.split("/").pop().split(".")[0] || "default";
     }
   
-    // Enviar comentário
+    // Adiciona comentário no Firebase
     formulario.addEventListener('submit', function(e) {
       e.preventDefault();
       const texto = inputText.value.trim();
@@ -195,16 +193,15 @@
   
       const musicId = getMusicId();
   
-      // Salva o comentário no Firebase associado à música específica
-      db.ref('comentarios/' + musicId).push({
+      db.ref(`comentarios/${musicId}`).push({
         texto: texto,
         timestamp: new Date().toISOString()
       });
   
-      inputText.value = ''; // Limpa o campo de texto
+      inputText.value = '';
     });
   
-    // Função para adicionar comentário na tela
+    // Mostra comentário na tela
     function adicionarComentarioNaTela(texto, timestamp) {
       const comentarioDiv = document.createElement('div');
       comentarioDiv.classList.add('comentario-individual');
@@ -216,24 +213,30 @@
       commentPost.appendChild(comentarioDiv);
     }
   
-    // Carrega os comentários em tempo real para a música atual
-    function displayComments() {
-      const musicId = getMusicId(); // Obtém o ID da música atual
-  
-      // Limpa os comentários atuais
+    // Limpa e carrega comentários da música atual
+    function carregarComentariosDaMusica() {
       commentPost.innerHTML = "<h5>Comentários</h5>";
+      const musicId = getMusicId();
   
-      db.ref('comentarios/' + musicId).on('child_added', function(snapshot) {
+      // Evita múltiplos listeners duplicados
+      if (currentMusicId === musicId) return;
+      currentMusicId = musicId;
+  
+      // Remove listeners anteriores
+      db.ref(`comentarios/${musicId}`).off();
+  
+      // Carrega comentários em tempo real
+      db.ref(`comentarios/${musicId}`).on('child_added', function(snapshot) {
         const comentario = snapshot.val();
         adicionarComentarioNaTela(comentario.texto, comentario.timestamp);
       });
     }
   
-    // Atualiza os comentários ao mudar de música
-    player.addEventListener('loadeddata', displayComments);
+    // Quando a música carregar, atualiza os comentários
+    player.addEventListener('loadeddata', carregarComentariosDaMusica);
   
-    // Carrega os comentários da música atual ao carregar a página
-    displayComments();
+    // Também carrega comentários ao abrir a página
+    window.addEventListener("DOMContentLoaded", carregarComentariosDaMusica);
   </script>
 </body>
 </html>

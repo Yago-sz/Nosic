@@ -1,6 +1,6 @@
 export default [
   {
-    id: "musica_1",  // ID da música
+    id: "musica1",  // ID da música
     src: "./musicas/feel.mp3",
     name: "d4vd - Feel It",
     cover: "./capas/feel.jpg",

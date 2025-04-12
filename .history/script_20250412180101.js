@@ -201,18 +201,12 @@ formulario.addEventListener('submit', function(e) {
   
     const musicaId = getMusicaAtualId();
   
-    function carregarComentarios() {
-        const musicaId = getMusicaAtualId();
-        commentPost.innerHTML = ''; // limpa os antigos
-      
-        db.ref(`comentarios/${musicaId}`).off(); // remove listeners antigos
-      
-        db.ref(`comentarios/${musicaId}`).on('child_added', function(snapshot) {
-          const comentario = snapshot.val();
-          adicionarComentarioNaTela(comentario.texto, comentario.timestamp);
-        });
-      }
-    inputText.value = '';   
+    db.ref(`comentarios/${musicaId}`).push({
+      texto: texto,
+      timestamp: new Date().toISOString()
+    });
+  
+    inputText.value = '';
 
     // Salva o novo comentário no Firebase
     const newCommentRef = push(commentsRef);

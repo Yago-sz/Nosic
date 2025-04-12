@@ -1,9 +1,4 @@
-import songs from "./Songs.js"; // Supondo que 'Songs.js' contém informações das músicas, incluindo o ID.
-
-// Função para obter o ID único da música atual
-function getMusicId() {
-    return songs[index].id;  // Pegando o ID da música com base no índice atual
-}
+import songs from "./Songs.js";
 
 // Selecionando elementos do player
 const player = document.querySelector("#player");
@@ -30,7 +25,6 @@ const loadMusic = (index) => {
     musicName.innerHTML = songs[index].name;
     musicCover.src = songs[index].cover;
     player.load();
-    displayComments();  // Carrega os comentários da música atual
 };
 
 
@@ -162,75 +156,61 @@ function alterarImagemCapa(caminhoImagem) {
 
     console.log("Página carregada!"); // Verifica se o JS está rodando
 
-   // Função para obter um ID único para cada música
-function getMusicId() {
-    return songs[index].id;  // Pegando o ID da música com base no índice atual
-}
-// Função para exibir os comentários da música
-function displayComments() {
-    const commentPost = document.getElementById("commentPost");  // Área onde os comentários aparecem
-    commentPost.innerHTML = "<h5>Comentários</h5>";  // Mantém o título da seção de comentários
+    // Função para obter um ID único para cada música
+    function getMusicId() {
+        return player ? player.src || "default" : "default";
+    }
 
-    const musicId = getMusicId(); // Obtém o ID da música atual
-    const commentsRef = ref(db, 'comentarios/' + musicId); // Referência ao nó de comentários da música no Firebase
+    // Função para exibir comentários na tela
+    function displayComments() {
+        commentPost.innerHTML = "<h5>Comentários</h5>"; // Mantém o título
 
-    // Ouvindo mudanças nos comentários
-    onValue(commentsRef, (snapshot) => {
-        const comments = snapshot.val();
-        if (comments) {
-            Object.values(comments).forEach(comment => {
-                addCommentToScreen(comment.text); // Exibe o comentário na tela
+        let comments = JSON.parse(localStorage.getItem("comments")) || {};
+        let musicId = getMusicId();
+
+        if (comments[musicId]) {
+            comments[musicId].forEach(comment => {
+                addCommentToScreen(comment);
             });
-        } else {
-            commentPost.innerHTML += "<p><em>Sem comentários ainda...</em></p>";
         }
-    });
-}
-// Função para adicionar um comentário na tela (sem precisar recarregar)
-function addCommentToScreen(comment) {
-    const commentPost = document.getElementById("commentPost");
-    let p = document.createElement("p");
-    p.classList.add("p-2", "text-wrap", "text-white");
-    p.innerHTML = `<strong>${comment}</strong>`;
-    commentPost.appendChild(p);
-}
-formulario.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const texto = inputText.value.trim();
-    if (texto === '') return;
-  
-    const musicaId = getMusicaAtualId();
-  
-    function carregarComentarios() {
-        const musicaId = getMusicaAtualId();
-        commentPost.innerHTML = ''; // limpa os antigos
-      
-        db.ref(`comentarios/${musicaId}`).off(); // remove listeners antigos
-      
-        db.ref(`comentarios/${musicaId}`).on('child_added', function(snapshot) {
-          const comentario = snapshot.val();
-          adicionarComentarioNaTela(comentario.texto, comentario.timestamp);
-        });
-      }
-    inputText.value = '';   
+    }
 
-    // Salva o novo comentário no Firebase
-    const newCommentRef = push(commentsRef);
-    set(newCommentRef, {
-        text: commentText,
-        timestamp: new Date().toISOString()
-    }).then(() => {
-        addCommentToScreen(commentText);  // Exibe o comentário na tela
-        textComent.value = "";  // Limpa o campo de texto
-    }).catch((error) => {
-        console.error("Erro ao salvar comentário:", error);
-    });
-});
-function getMusicaAtualId() {
-    const nome = document.getElementById('musicName').innerText;
-    // Transforma em um ID seguro (ex: "Lo-Fi Beats" -> "lo-fi-beats")
-    return nome.trim().toLowerCase().replace(/\s+/g, '-');
-  }
+    // Função para adicionar um comentário na tela (sem precisar recarregar)
+    function addCommentToScreen(comment) {
+        let p = document.createElement("p");
+        p.classList.add("p-2", "text-wrap", "text-white");
+        p.innerHTML = `<strong>${comment}</strong>`;
+        commentPost.appendChild(p);
+    }
 
-    
+    // Evento para adicionar comentários
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const musicId = getMusicId();
+        const commentText = textComent.value.trim();
+
+        if (commentText === "") {
+            return; // Impede comentários vazios
+        }
+
+        let comments = JSON.parse(localStorage.getItem("comments")) || {};
+        if (!comments[musicId]) {
+            comments[musicId] = [];
+        }
+
+        comments[musicId].push(commentText);
+        localStorage.setItem("comments", JSON.stringify(comments));
+
+        addCommentToScreen(commentText); // Adiciona o comentário à tela
+        textComent.value = ""; // Limpa o campo de texto
+    });
+
+    // Atualiza os comentários ao carregar a página
+    displayComments();
+
+    // Função para obter um ID único para cada música
+function getMusicId() {
+    return songs[index].id;  // Aqui, pegamos o ID da música com base no índice
+}
 });
