@@ -367,13 +367,6 @@ body .all{
     width: 320px; /* Define um tamanho menor */
    
 }
-@media (max-width: 768px) {
-    .Coment {
-        width: 90%; /* No celular, ocupa 90% da tela */
-        bottom: 10px; /* Ajuste a posição */
-        right: 5%; /* Ajuste a posição para o centro */
-    }
-}
 
 
 #formulario {

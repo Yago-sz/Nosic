@@ -361,19 +361,18 @@ body .all{
 }
 
 .Coment {
-    position: absolute; /* Ou use position: fixed; se quiser fixo na tela */
-    right: 300px; /* Ajuste conforme necessário */
-    top: 150px; /* Ajuste conforme necessário */
-    width: 320px; /* Define um tamanho menor */
-   
+    position: fixed; /* Use fixed para que o pop-up fique fixo na tela */
+    bottom: 20px; /* Ajuste a distância da parte inferior */
+    right: 20px; /* Ajuste a distância da parte direita */
+    width: 80%; /* Faça a largura da seção de comentários responsiva */
+    max-width: 400px; /* Defina um limite para a largura */
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semitransparente */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    z-index: 1000; /* Para garantir que apareça acima de outros elementos */
+    display: none; /* Inicialmente oculto */
 }
-@media (max-width: 768px) {
-    .Coment {
-        width: 90%; /* No celular, ocupa 90% da tela */
-        bottom: 10px; /* Ajuste a posição */
-        right: 5%; /* Ajuste a posição para o centro */
-    }
-}
+
 
 
 #formulario {
