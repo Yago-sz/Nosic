@@ -552,19 +552,5 @@ textarea {
 .form-control{
     background-color: #0e030f;
    border: none;
-   border-radius: 20px;
    
-}
-
-.form-control::placeholder{
-    color:aqua;
-    opacity: 5;
-}
-
-.form-control:hover{
-    columns: red;
-}
-
-.comment-text::placeholder{
-   color: aqua;
 }

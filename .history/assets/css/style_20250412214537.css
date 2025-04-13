@@ -549,22 +549,7 @@ textarea {
     }
 }
 
-.form-control{
-    background-color: #0e030f;
-   border: none;
-   border-radius: 20px;
+.inputNome{
+    box-shadow: 5px 0 10px #0e030f;
    
-}
-
-.form-control::placeholder{
-    color:aqua;
-    opacity: 5;
-}
-
-.form-control:hover{
-    columns: red;
-}
-
-.comment-text::placeholder{
-   color: aqua;
 }

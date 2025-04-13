@@ -105,10 +105,10 @@
         <form id="formulario" class="rounded-2 p-3 w-50">
             <h1 class="opinion mb-2">Diga sua opinião!</h1>
             <div class="mb-2">
-                <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                <input type="text" class="form-control" id="inputNome" placeholder="Digite seu nome (visível apenas para o admin)">
             </div>
             <div class="mb-2">
-                <textarea class="comment-text" rows="4" id="inputText" placeholder="Diga seu julgamento"></textarea>
+                <textarea class="comment-text" rows="4" id="inputText" placeholder="Digite seu julgamento..."></textarea>
             </div>
             <div class="julgar">
                 <button type="submit" class="btn-enviar">Comentar</button>
@@ -190,22 +190,20 @@
 
   // Enviar comentário
   formulario.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const texto = inputText.value.trim();
-  const nome = document.getElementById('inputNome').value.trim();
-  if (texto === '') return;
+    e.preventDefault();
+    const texto = inputText.value.trim();
+    if (texto === '') return;
 
-  const musicId = getMusicId();
+    const musicId = getMusicId();
 
-  // Salva o comentário no Firebase associado à música específica
-  db.ref('comentarios/' + musicId).push({
-    texto: texto,
-    nome: nome,
-    timestamp: new Date().toISOString()
+    // Salva o comentário no Firebase associado à música específica
+    db.ref('comentarios/' + musicId).push({
+      texto: texto,
+      timestamp: new Date().toISOString()
+    });
+
+    inputText.value = ''; // Limpa o campo de texto
   });
-
-  inputText.value = ''; // Limpa o campo de texto
-});
 
 
   // Carrega os comentários em tempo real para a música atual

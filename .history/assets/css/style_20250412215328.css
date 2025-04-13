@@ -557,14 +557,10 @@ textarea {
 }
 
 .form-control::placeholder{
-    color:aqua;
+    color:#66126b;
     opacity: 5;
 }
 
-.form-control:hover{
-    columns: red;
-}
-
 .comment-text::placeholder{
-   color: aqua;
+   color: white;
 }

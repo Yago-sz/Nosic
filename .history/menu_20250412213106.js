@@ -173,29 +173,4 @@ function adicionarComentarioNaTela(texto, timestamp, nome = null) {
     container.appendChild(dataElem);
     commentPost.appendChild(container);
 }
-function adicionarComentarioNaTela(texto, timestamp, nome) {
-    // criar elementos de comentário
-  }
-function adicionarComentarioNaTela(texto, timestamp, nome) {
-    const div = document.createElement('div');
-    div.classList.add('comentario');
-  
-    // Formatação do timestamp
-    const data = new Date(timestamp);
-    const horario = data.toLocaleString("pt-BR");
-  
-    let conteudoHTML = `
-      <p class="comentario-texto">${texto}</p>
-      <small class="comentario-timestamp">${horario}</small>
-    `;
-  
-    // Só mostra o nome se o admin estiver logado
-    if (adminLogado) {
-      conteudoHTML += `<p class="comentario-nome"><strong>Nome:</strong> ${nome || "Desconhecido"}</p>`;
-    }
-  
-    div.innerHTML = conteudoHTML;
-  
-    commentPost.appendChild(div);
-  }
 });

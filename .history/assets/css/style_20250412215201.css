@@ -538,7 +538,7 @@ textarea {
   }
   
 .comment-text{
-  font-size: 20px;
+    border-radius: 8px;
 }
 @media (max-width: 768px) {
     textarea {
@@ -557,14 +557,10 @@ textarea {
 }
 
 .form-control::placeholder{
-    color:aqua;
+    color: white;
     opacity: 5;
 }
 
-.form-control:hover{
-    columns: red;
-}
-
 .comment-text::placeholder{
-   color: aqua;
+   color: white;
 }

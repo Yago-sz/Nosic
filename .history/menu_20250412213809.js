@@ -174,9 +174,6 @@ function adicionarComentarioNaTela(texto, timestamp, nome = null) {
     commentPost.appendChild(container);
 }
 function adicionarComentarioNaTela(texto, timestamp, nome) {
-    // criar elementos de comentário
-  }
-function adicionarComentarioNaTela(texto, timestamp, nome) {
     const div = document.createElement('div');
     div.classList.add('comentario');
   

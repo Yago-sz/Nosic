@@ -555,16 +555,3 @@ textarea {
    border-radius: 20px;
    
 }
-
-.form-control::placeholder{
-    color:aqua;
-    opacity: 5;
-}
-
-.form-control:hover{
-    columns: red;
-}
-
-.comment-text::placeholder{
-   color: aqua;
-}
