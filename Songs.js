@@ -6,10 +6,22 @@ export default [
     cover: "./capas/elvis.jpg",
   },
   {
+    id: "musica6",  // ID da música
+    src: "./musicas/linkin.mp3",
+    name: "Two Faced - Linkin Park",
+    cover: "./capas/linkin.jpg",
+  },
+  {
     id: "musica_1",  // ID da música
     src: "./musicas/feel.mp3",
     name: "d4vd - Feel It",
     cover: "./capas/feel.jpg",
+  },
+  {
+    id: "musica6",  // ID da música
+    src: "./musicas/know.mp3",
+    name: "Do I Wanna Know? - Arctic Monkeys",
+    cover: "./capas/know.jpg",
   },
   {
     id: "musica2",  // ID da música
@@ -22,6 +34,12 @@ export default [
     src: "./musicas/devil.mp3",
     name: "Afterlife - Evanescence",
     cover: "./capas/Devil.jpg",
+  },
+  {
+    id: "musica3",  // ID da música
+    src: "./musicas/good.mp3",
+    name: "Linkin Park - Good Things Go",
+    cover: "./capas/good.jpg",
   },
   {
     id: "musica4",  // ID da música

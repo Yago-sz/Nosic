@@ -1,5 +1,9 @@
-body{
-    height: 100vh;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: auto; /* ou remova height */
+    min-height: 100vh; /* garante que cubra pelo menos a tela inteira */
+    overflow-x: hidden; /* previne rolagem lateral indesejada */
 }
 
 *{
@@ -302,7 +306,7 @@ body .all{
 
 
 .Coment {
-    position: fixed; /* Ou use position: fixed; se quiser fixo na tela */
+    position: absolute; /* Ou use position: fixed; se quiser fixo na tela */
     right: 300px; /* Ajuste conforme necessário */
     top: 150px; /* Ajuste conforme necessário */
     width: 320px; /* Define um tamanho menor */
