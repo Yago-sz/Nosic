@@ -43,6 +43,12 @@ export default [
   },
   {
     id: "musica6",  // ID da música
+    src: "./musicas/soap.mp3",
+    name: "Soap",
+    cover: "./capas/soap.jpg",
+  },
+  {
+    id: "musica6",  // ID da música
     src: "./musicas/Faroeste Caboclo.mp3",
     name: "Faroeste Caboclo",
     cover: "./capas/faroeste.jpg",
@@ -107,12 +113,7 @@ export default [
     name: "Lauryn Hill - Ex-Factor",
     cover: "./capas/lauu.jpg",
   },
-  {
-    id: "musica16",  // ID da música
-    src: "./musicas/vi.mp3",
-    name: "Faroeste Caboclo",
-    cover: "./capas/vi.jpg",
-  }
+
 ];
       
 
