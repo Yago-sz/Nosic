@@ -201,6 +201,16 @@ function adicionarComentarioNaTela(texto, timestamp, nome) {
   formulario.addEventListener('submit', function(e) {
     e.preventDefault();
     
+    const nome = document.getElementById('inputNome').value.trim();
+    const texto = inputText.value.trim();
+  
+    if (nome === '' || texto === '') {
+      alert('Por favor, preencha seu nome e comentário.');
+      return;
+    }
+  
+    const musicId = getMusicId();
+  
     // Salva no Firebase com nome também
     db.ref('comentarios/' + musicId).push({
       nome: nome,
