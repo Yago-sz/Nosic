@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let innerHtml = '';
 
     if (isAdmin && nome) {
-        innerHtml += `<strong class="text-warning">🗣 ${nome}</strong><br>`;  // Adiciona o nome do admin
+        innerHtml += `<strong class="text-warning admin-name">${nome}</strong><br>`;  // Adiciona a classe 'admin-name'
     }
 
     // Depois o comentário e a data
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     commentContainer.appendChild(p);
 
-    // Se for comentário do admin, adiciona a classe 'admin-comment' para destacar
+    // Se for comentário do admin, adiciona a classe 'admin-comment' para destaque
     if (isAdmin) {
         commentContainer.classList.add("admin-comment");
     }
@@ -97,16 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         commentContainer.appendChild(deleteButton);
     }
-
-    // Coloca o comentário do admin no topo
-    if (isAdmin) {
-        commentPost.insertBefore(commentContainer, commentPost.firstChild);  // Adiciona no topo
-    } else {
-        commentPost.appendChild(commentContainer);  // Adiciona no final se não for admin
-    }
-
-
-    commentPost.appendChild(commentContainer);
 }
 // Função para formatar o timestamp
 function formatTimestamp(timestamp) {

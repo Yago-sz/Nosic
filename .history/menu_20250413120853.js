@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
  // Mostra comentário na tela
  function addCommentToScreen(commentText, timestamp, commentKey, nome = null) {
     const commentContainer = document.createElement("div");
-    commentContainer.classList.add("d-flex", "flex-column", "mb-3", "bg-white", "p-2", "rounded");
+    commentContainer.classList.add("d-flex", "flex-column", "mb-3", "bg-crimsom", "p-2", "rounded");
 
     const p = document.createElement("p");
     p.classList.add("text-black", "mb-1");
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let innerHtml = '';
 
     if (isAdmin && nome) {
-        innerHtml += `<strong class="text-warning">🗣 ${nome}</strong><br>`;  // Adiciona o nome do admin
+        innerHtml += `<strong class="text-warning">🗣 ${nome}</strong><br>`;
     }
 
     // Depois o comentário e a data
@@ -79,11 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     p.innerHTML = innerHtml;
 
     commentContainer.appendChild(p);
-
-    // Se for comentário do admin, adiciona a classe 'admin-comment' para destacar
-    if (isAdmin) {
-        commentContainer.classList.add("admin-comment");
-    }
 
     // Botão de deletar, se admin
     if (isAdmin) {
@@ -97,14 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         commentContainer.appendChild(deleteButton);
     }
-
-    // Coloca o comentário do admin no topo
-    if (isAdmin) {
-        commentPost.insertBefore(commentContainer, commentPost.firstChild);  // Adiciona no topo
-    } else {
-        commentPost.appendChild(commentContainer);  // Adiciona no final se não for admin
-    }
-
 
     commentPost.appendChild(commentContainer);
 }

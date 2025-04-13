@@ -590,12 +590,3 @@ textarea {
 .text-warning {
     color: #ffca2c !important;  /* Cor do texto do admin */
 }
-
-.comment-container p {
-    font-size: 14px;
-}
-
-.comment-container .text-warning {
-    color: #ffcc00; /* Cor amarela para destacar o admin */
-    font-weight: bold;
-}

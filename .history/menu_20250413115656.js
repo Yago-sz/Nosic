@@ -9,7 +9,7 @@ this.classList.add('ativo')
 menuItem.forEach((item)=>
     item.addEventListener('click',selectlink)
 )
-let isAdmin = false;
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const textComent = document.getElementById("inputText");
@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const commentPost = document.getElementById("commentPost");
     const player = document.getElementById("player");
     const adminLoginButton = document.getElementById("adminLogin");
+
+    let isAdmin = false;
 
     // Inicializar Firebase (caso ainda não esteja feito no HTML)
     const firebaseConfig = {
@@ -54,23 +56,23 @@ document.addEventListener("DOMContentLoaded", () => {
         // Adiciona novo listener
         commentRef.on('child_added', function(snapshot) {
             const comentario = snapshot.val();
-            addCommentToScreen(comentario.texto, comentario.timestamp, snapshot.key, comentario.nome); // Passa a chave do comentário
+            addCommentToScreen(comentario.texto, comentario.timestamp, snapshot.key); // Passa a chave do comentário
         });
     }
 
  // Mostra comentário na tela
  function addCommentToScreen(commentText, timestamp, commentKey, nome = null) {
     const commentContainer = document.createElement("div");
-    commentContainer.classList.add("d-flex", "flex-column", "mb-3", "bg-white", "p-2", "rounded");
+    commentContainer.classList.add("d-flex", "flex-column", "mb-3", "bg-dark", "p-2", "rounded");
 
     const p = document.createElement("p");
-    p.classList.add("text-black", "mb-1");
+    p.classList.add("text-white", "mb-1");
 
     // Começa com nome (se for admin)
     let innerHtml = '';
 
     if (isAdmin && nome) {
-        innerHtml += `<strong class="text-warning">🗣 ${nome}</strong><br>`;  // Adiciona o nome do admin
+        innerHtml += `<strong class="text-warning">👤 ${nome}</strong><br>`;
     }
 
     // Depois o comentário e a data
@@ -79,11 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     p.innerHTML = innerHtml;
 
     commentContainer.appendChild(p);
-
-    // Se for comentário do admin, adiciona a classe 'admin-comment' para destacar
-    if (isAdmin) {
-        commentContainer.classList.add("admin-comment");
-    }
 
     // Botão de deletar, se admin
     if (isAdmin) {
@@ -97,14 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         commentContainer.appendChild(deleteButton);
     }
-
-    // Coloca o comentário do admin no topo
-    if (isAdmin) {
-        commentPost.insertBefore(commentContainer, commentPost.firstChild);  // Adiciona no topo
-    } else {
-        commentPost.appendChild(commentContainer);  // Adiciona no final se não for admin
-    }
-
 
     commentPost.appendChild(commentContainer);
 }
@@ -137,11 +126,11 @@ formulario.addEventListener('submit', function(e) {
     inputText.value = '';
     inputNome.value = '';
 
-
+    let isAdmin = false;
 });
 document.getElementById('adminLogin').addEventListener('click', function() {
     const senha = prompt("Digite a senha de admin:");
-    if (senha === "sylv") {
+    if (senha === "suaSenhaAqui") {
         isAdmin = true;
         alert("Modo admin ativado.");
         displayComments(); // recarrega com os nomes visíveis
@@ -149,7 +138,18 @@ document.getElementById('adminLogin').addEventListener('click', function() {
         alert("Senha incorreta.");
     }
 });
-  
+    // Ativa modo Admin
+    adminLoginButton.addEventListener("click", () => {
+        let senha = prompt("Digite a senha de admin:");
+        if (senha === "sylv") {
+            isAdmin = true;
+            alert("Modo Admin ativado!");
+            displayComments(); // Atualiza para mostrar ❌
+        } else {
+            alert("Senha incorreta!");
+        }
+    });
+
     // Recarrega comentários ao trocar de música
     player.addEventListener("loadeddata", displayComments);
 
@@ -184,7 +184,9 @@ function adicionarComentarioNaTela(texto, timestamp, nome = null) {
     container.appendChild(dataElem);
     commentPost.appendChild(container);
 }
-
+function adicionarComentarioNaTela(texto, timestamp, nome) {
+    // criar elementos de comentário
+  }
 function adicionarComentarioNaTela(texto, timestamp, nome) {
     const div = document.createElement('div');
     div.classList.add('comentario');

@@ -59,33 +59,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
  // Mostra comentário na tela
- function addCommentToScreen(commentText, timestamp, commentKey, nome = null) {
+ function addCommentToScreen(commentText, timestamp, commentKey, nome = null, isAdminComment = false) {
     const commentContainer = document.createElement("div");
-    commentContainer.classList.add("d-flex", "flex-column", "mb-3", "bg-white", "p-2", "rounded");
+    commentContainer.classList.add("d-flex", "flex-column", "mb-3", "p-2", "rounded");
+
+    if (isAdminComment) {
+        commentContainer.classList.add("bg-warning-subtle", "border", "border-warning");
+    } else {
+        commentContainer.classList.add("bg-white");
+    }
 
     const p = document.createElement("p");
     p.classList.add("text-black", "mb-1");
 
-    // Começa com nome (se for admin)
     let innerHtml = '';
 
-    if (isAdmin && nome) {
-        innerHtml += `<strong class="text-warning">🗣 ${nome}</strong><br>`;  // Adiciona o nome do admin
+    // ✅ Mostra nome do admin sempre
+    if (isAdminComment && nome) {
+        innerHtml += `<strong class="text-warning">🛡️ ${nome}</strong><br>`;
     }
 
-    // Depois o comentário e a data
-    innerHtml += `<span>${commentText}</span><br><small class="text-muted">${formatTimestamp(timestamp)}</small>`;
+    // ✅ Mostra nome dos usuários comuns apenas para o admin
+    if (!isAdminComment && isAdmin && nome) {
+        innerHtml += `<small class="text-muted">👤 ${nome}</small><br>`;
+    }
 
+    innerHtml += `<span>${commentText}</span><br><small class="text-muted">${formatTimestamp(timestamp)}</small>`;
     p.innerHTML = innerHtml;
 
     commentContainer.appendChild(p);
 
-    // Se for comentário do admin, adiciona a classe 'admin-comment' para destacar
-    if (isAdmin) {
-        commentContainer.classList.add("admin-comment");
-    }
-
-    // Botão de deletar, se admin
+    // Botão deletar (visível só para o admin logado)
     if (isAdmin) {
         const deleteButton = document.createElement("button");
         deleteButton.classList.add("btn", "btn-danger", "btn-sm", "align-self-end");
@@ -93,10 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteButton.onclick = () => {
             const musicId = getMusicId();
             db.ref(`comentarios/${musicId}/${commentKey}`).remove();
-            displayComments(); // atualiza após deletar
+            displayComments();
         };
         commentContainer.appendChild(deleteButton);
     }
+
+    commentPost.appendChild(commentContainer);
+
 
     // Coloca o comentário do admin no topo
     if (isAdmin) {

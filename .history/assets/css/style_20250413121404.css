@@ -579,23 +579,3 @@ textarea {
     font-weight: bold;  /* Texto em negrito */
     margin-bottom: 15px;  /* Espaço inferior */
 }
-.bg-warning-subtle {
-    background-color: #fff3cd !important;  /* Cor de fundo suave */
-}
-
-.border-warning {
-    border-color: #ffca2c !important;  /* Cor de borda dourada */
-}
-
-.text-warning {
-    color: #ffca2c !important;  /* Cor do texto do admin */
-}
-
-.comment-container p {
-    font-size: 14px;
-}
-
-.comment-container .text-warning {
-    color: #ffcc00; /* Cor amarela para destacar o admin */
-    font-weight: bold;
-}
