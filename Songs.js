@@ -43,7 +43,7 @@ export default [
   },
   {
     id: "musica6",  // ID da música
-    src: "./musicas/soap.mp3",
+    src: "./musicas/melani.mp3",
     name: "Soap",
     cover: "./capas/soap.jpg",
   },
@@ -113,7 +113,12 @@ export default [
     name: "Lauryn Hill - Ex-Factor",
     cover: "./capas/lauu.jpg",
   },
-
+  {
+    id: "musica6",  // ID da música
+    src: "./musicas/pizza.mp3",
+    name: "Comentem Musicas!!!!!",
+    cover: "./capas/fran.jpg",
+  },
 ];
       
 
