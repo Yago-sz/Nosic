@@ -42,6 +42,12 @@ export default [
     cover: "./capas/Devil.jpg",
   },
   {
+    id: "musica_1",  // ID da música
+    src: "./musicas/hotel.mp3",
+    name: "Eagles - Hotel California",
+    cover: "./capas/hotel.jpg",
+  },
+  {
     id: "musica3",  // ID da música
     src: "./musicas/good.mp3",
     name: "Linkin Park - Good Things Go",
@@ -70,6 +76,12 @@ export default [
     src: "./musicas/melani.mp3",
     name: "Soap",
     cover: "./capas/soap.jpg",
+  },
+  {
+    id: "musica3",  // ID da música
+    src: "./musicas/ambulante.mp3",
+    name: "Metamorfose Ambulante - raul seixas",
+    cover: "./capas/ambulante.jpg",
   },
   {
     id: "musica6",  // ID da música
