@@ -13,6 +13,12 @@ export default [
   },
   {
     id: "musica_1",  // ID da música
+    src: "./musicas/november.mp3",
+    name: "Guns N' Roses - November Rain",
+    cover: "./capas/november.jpg",
+  },
+  {
+    id: "musica_1",  // ID da música
     src: "./musicas/feel.mp3",
     name: "d4vd - Feel It",
     cover: "./capas/feel.jpg",
