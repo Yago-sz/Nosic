@@ -18,10 +18,22 @@ export default [
     cover: "./capas/november.jpg",
   },
   {
+    id: "musica4",  // ID da música
+    src: "./musicas/mina.mp3",
+    name: "Mina do Condomínio - Seu Jorge ",
+    cover: "./capas/mina.jpg",
+  },
+  {
     id: "musica_1",  // ID da música
     src: "./musicas/feel.mp3",
     name: "d4vd - Feel It",
     cover: "./capas/feel.jpg",
+  },
+  {
+    id: "musica_1",  // ID da música
+    src: "./musicas/you.mp3",
+    name: "Daughter - Youth",
+    cover: "./capas/you.jpg",
   },
   {
     id: "musica6",  // ID da música
@@ -64,6 +76,12 @@ export default [
     src: "./musicas/acdc.mp3",
     name: "AC/DC - Back In Black ",
     cover: "./capas/acdc.jpg",
+  },
+  {
+    id: "musica5",  // ID da música
+    src: "./musicas/maniac.mp3",
+    name: "Maniac - Michael Sembello",
+    cover: "./capas/maniac.jpg",
   },
   {
     id: "musica5",  // ID da música
